@@ -1,0 +1,14 @@
+# Definition of Done
+- Dashboard complete
+- PL Import automated
+- Whole/Partial calculation automatic
+- Open Boxes module complete
+- First Scan complete
+- Whole Scan complete
+- Segregation assistant complete
+- Partial Scan aggregation complete
+- Reports generated
+- Settings complete
+- VBA compiles without errors
+- Workbook tested
+- Ready for warehouse use
