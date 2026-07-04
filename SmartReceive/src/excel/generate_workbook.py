@@ -5,32 +5,53 @@ def create_workbook():
     workbook_path = 'SmartReceive_Excel_Pro.xlsm'
     workbook = xlsxwriter.Workbook(workbook_path)
 
-    # Enable VBA
+    # Download/Ensure vbaProject.bin exists from previous steps or external source
     if os.path.exists('vbaProject.bin'):
         workbook.add_vba_project('vbaProject.bin')
 
+    # Formats
+    btn_fmt = workbook.add_format({
+        'bg_color': '#4F81BD',
+        'font_color': 'white',
+        'bold': True,
+        'align': 'center',
+        'valign': 'vcenter',
+        'border': 1
+    })
+    title_fmt = workbook.add_format({'bold': True, 'font_size': 24, 'font_color': '#1F4E78'})
+
     # 1. Dashboard
     ws_dashboard = workbook.add_worksheet('Dashboard')
-    ws_dashboard.set_tab_color('red')
-    ws_dashboard.write('B2', 'SmartReceive Pro', workbook.add_format({'bold': True, 'font_size': 24}))
+    ws_dashboard.write('B2', 'SmartReceive Pro Dashboard', title_fmt)
     ws_dashboard.write('B4', 'Operator Name:')
     ws_dashboard.write('D4', '', workbook.add_format({'bg_color': '#EBF1DE', 'border': 1}))
-    ws_dashboard.write('B6', 'Instructions:')
-    ws_dashboard.write('B7', '1. Enter name above.')
-    ws_dashboard.write('B8', '2. Go to "Scanner UI" sheet.')
+
+    # Dashboard Buttons (Cells)
+    ws_dashboard.write('B6', 'START SCANNING', btn_fmt)
+    ws_dashboard.set_row(5, 30) # Row 6 height
+    ws_dashboard.set_column('B:B', 20)
+
+    ws_dashboard.write('B8', 'IMPORT SUPPLIER PL', btn_fmt)
+    ws_dashboard.set_row(7, 30)
+
+    ws_dashboard.write('B10', 'GENERATE REPORTS', btn_fmt)
+    ws_dashboard.set_row(9, 30)
 
     # 2. Scanner UI
     ws_scanner = workbook.add_worksheet('Scanner UI')
-    ws_scanner.set_tab_color('blue')
-    ws_scanner.write('B2', 'SCANNER INTERFACE', workbook.add_format({'bold': True, 'font_size': 18}))
-    ws_scanner.write('B4', 'Scanner Input:')
-    ws_scanner.write('C4', '', workbook.add_format({'bg_color': '#FFFFCC', 'border': 1}))
-    ws_scanner.write('B6', 'Current Mode:')
-    ws_scanner.write('C6', 'First Scan')
-    ws_scanner.write('B7', 'Status:')
-    ws_scanner.write('C7', 'Ready')
-    ws_scanner.write('B8', 'Target Box (Partial):')
-    ws_scanner.write('C8', '')
+    ws_scanner.write('B2', 'SCANNER INTERFACE', title_fmt)
+    ws_scanner.write('B4', 'SCAN BARCODE HERE:', workbook.add_format({'bold': True}))
+    ws_scanner.write('D4', '', workbook.add_format({'bg_color': '#FFFFCC', 'border': 2}))
+
+    ws_scanner.write('B6', 'CURRENT MODE:', workbook.add_format({'bold': True}))
+    ws_scanner.write('D6', 'First Scan', workbook.add_format({'bold': True, 'font_color': 'red'}))
+
+    ws_scanner.write('B8', 'STATUS:', workbook.add_format({'bold': True}))
+    ws_scanner.write('D8', 'Ready', workbook.add_format({'italic': True}))
+
+    # Scanner UI Buttons
+    ws_scanner.write('F6', 'SWITCH MODE', btn_fmt)
+    ws_scanner.write('F8', 'CLEAR INPUT', btn_fmt)
 
     # Data Sheets
     sheets_config = [
@@ -53,7 +74,6 @@ def create_workbook():
         })
 
     workbook.close()
-    print(f"Workbook {workbook_path} created with VBA project shell.")
 
 if __name__ == "__main__":
     create_workbook()

@@ -1,15 +1,9 @@
-' --- ThisWorkbook Module ---
+Attribute VB_Name = "ThisWorkbook"
 Option Explicit
 
 Private Sub Workbook_Open()
     On Error Resume Next
-    M_Security.ProtectWorkbook
-    M_Security.HideTechnicalSheets
-
+    ProtectProject
     ThisWorkbook.Sheets("Dashboard").Select
-    ShowInfo "SmartReceive Pro Loaded. Please enter Operator name."
-End Sub
-
-Public Sub OnStartClick()
-    ThisWorkbook.Sheets("Scanner UI").Select
+    MsgBox "SmartReceive Pro Ready. Enter Operator Name.", vbInformation
 End Sub

@@ -1,31 +1,27 @@
 # SmartReceive Pro - Operator Guide
 
 ## Introduction
-SmartReceive Pro is an automated warehouse receiving application built in Excel. It streamlines the process from Supplier Packing List (PL) import to WMS Export.
+SmartReceive Pro is an automated warehouse receiving application built in Excel.
 
 ## Getting Started
-1. Open `SmartReceive_Pro.xlsm`.
-2. Ensure macros are enabled.
-3. On the **Dashboard**, enter your name in the designated cell.
+1. Open `SmartReceive_Excel_Pro.xlsm`.
+2. Enable Macros if prompted.
+3. On the **Dashboard**, enter your name in the "Operator Name" cell.
 
 ## Workflow
 
 ### 1. PL Import
-- Use the **Settings** sheet or the Dashboard instruction to trigger **Import PL**.
-- Select the supplier's packing list file (.csv).
-- The system will automatically classify cartons as **Whole** or **Partial**.
+- On the **Dashboard**, click the **IMPORT SUPPLIER PL** button.
+- Select the CSV packing list from the supplier.
 
 ### 2. Scanning (Scanner UI)
-- All scanning is done on the **Scanner UI** sheet.
-- **First Scan**: Scan the carton barcode. The system will tell you if it's Whole or Partial.
-- **Whole Scan**: Change mode to "Whole Scan" and scan the carton.
-- **Segregation**: Change mode to "Segregation". Scan the carton, then scan each item. The system will suggest a box.
-- **Partial Scan**: Change mode to "Partial Scan". Scan the box name, then scan all items inside it.
+- Go to the **Scanner UI** sheet.
+- **Switch Mode**: Click the **SWITCH MODE** button to toggle between First Scan, Whole Scan, and Segregation.
+- **Scanning**: Scan the barcode into the "SCAN BARCODE HERE" cell.
+- The system will process the input automatically.
 
-### 3. Reports & Export
-- Once finished, go to the main menu/buttons to **Generate WMS Export**.
-- The file will be saved in your configured folder.
+### 3. Reports
+- On the **Dashboard**, click **GENERATE REPORTS** to create the WMS Export file.
 
-## Security
-- Technical sheets are hidden and protected.
-- Admin Password: `SR2026`
+## Admin
+- Technical sheets are hidden and protected (Password: `SR2026`).
