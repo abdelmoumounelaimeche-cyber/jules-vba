@@ -1,0 +1,11 @@
+# Engineering Rules
+- Preserve warehouse business logic.
+- Improve usability, not workflow.
+- Never hardcode stores/providers/customers.
+- Hide technical sheets.
+- Scanner-first UX.
+- Large buttons.
+- High contrast.
+- Validate duplicates, unknown barcodes, wrong stores, excess quantities.
+- Separate VBA into modules.
+- Use meaningful names and error handling.
